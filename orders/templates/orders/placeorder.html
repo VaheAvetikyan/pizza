@@ -1,0 +1,32 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Place Order
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row order-card">
+        <div class="col s12 m12">
+            <div class="card blue-grey darken-1 z-depth-4 large">
+                <div class="card-content">
+                    {% for object in cart %}
+                    <div id="_{{ object.id }}">
+                        <p style="font-size: large;">
+                            <strong>{{ object.item.name }}</strong> ({{ object.item.type }}) - $ {{ object.size }}</p>
+                    {% endfor %}
+                    <h4>Total payment: <strong>$ {{ total }}</strong></h4>
+                    <hr>
+                </div>
+                <div class="card-action right-align">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="submit" class="btn-flat" value="Place Order" />
+                    </form>
+                    <a href="/cart">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

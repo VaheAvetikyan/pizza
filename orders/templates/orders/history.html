@@ -1,0 +1,26 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Orders
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for order in orders %}
+    <div class="col s12 m7 z-depth-2">
+        <div class="card horizontal">
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h4 class="header">{{ order.item.name }} ({{ order.item.type }})</h4>
+                    <p>Price: $ {{ order.price }}</p>
+                    <p class="right-align">Ordered on: {{ order.time }}</p>
+                </div>
+                <div class="card-action right-align">
+                    <a href="#">Status: {{ order.get_status_display }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

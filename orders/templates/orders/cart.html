@@ -1,0 +1,28 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Shopping Cart
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for object in cart %}
+    <div id="_{{ object.id }}">
+        <p style="font-size: large;">
+            <strong>{{ object.item.name }}</strong> ({{ object.item.type }}) - $ {{ object.size }}</p>
+        <span style="font-size: small;">Remove from shopping cart</span>
+        <button class="remove-item btn-flat" data-item="{{ object.id }}" title="remove from shopping cart">
+            <i class="material-icons">remove_shopping_cart</i></button>
+        <br>
+    </div>
+    {% empty %}
+    <p>No items added to Shopping cart</p>
+    {% endfor %}
+    <h4>Subtotal (<span id="cart-count-total">{{cart_count}}</span>): <strong></strong>$ <span
+            id="cart-subtotal">{{ total }}</span></strong></h4>
+    <hr>
+    {% if total > 0 %}
+    <a href="/cart/placeorder" id="proceed-to-order" class="btn">Proceed to Order</a>
+    {% endif %}
+</div>
+{% endblock %}

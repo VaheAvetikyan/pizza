@@ -1,0 +1,18 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn" type="submit">Login</button>
+    </form>
+    <br>
+    <hr>
+    <p style="font-size: small;"><a href="/register">Register</a> if you don't have account</p>
+</div>
+{% endblock %}
