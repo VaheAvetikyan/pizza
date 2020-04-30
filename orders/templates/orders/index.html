@@ -1,0 +1,158 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Pizzas
+{% endblock %}
+
+{% block nav %}
+<div id="navbar" class="nav-content">
+    <ul class="tabs tabs-transparent">
+        <li class="tab"><a class="active" href="#{{ pizza.first.type }}">{{ pizza.first.type }}</a></li>
+        <li class="tab"><a class="active" href="#{{ toppings.first.type }}">{{ toppings.first.type }}</a></li>
+        <li class="tab"><a class="active" href="#{{ subs.first.type }}">{{ subs.first.type }}</a></li>
+        <li class="tab"><a class="active" href="#{{ pasta.first.type }}">{{ pasta.first.type }}</a></li>
+        <li class="tab"><a class="active" href="#{{ salads.first.type }}">{{ salads.first.type }}</a></li>
+        <li class="tab"><a class="active" href="#{{ platters.first.type }}">{{ platters.first.type }}</a></li>
+        <!-- <li class="tab disabled"><a href="#test3">Disabled</a></li> -->
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Small</th>
+                {% if user.is_authenticated %}
+                <th></th>
+                {% endif %}
+                <th>Large</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <th id="{{ pizza.first.type }}">{{ pizza.first.type }}</th>
+            {% for item in pizza %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.small }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button class="add-item btn-flat" data-pizza="{{ item.name }} - small" data-size="{{ item.small }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+                <td>{{ item.large }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button class="add-item btn-flat" data-pizza="{{ item.name }} - large" data-size="{{ item.large }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+            </tr>
+            {% endfor %}
+
+            <th id="{{ toppings.first.type }}">{{ toppings.first.type }} &nbsp; &nbsp; &nbsp;
+                <i title="Select Regular or Sicilian Pizza to enable adding Toppings. You may add up to 3 toppings on each Pizza." class="material-icons">help_outline</i></th>
+            {% for item in toppings %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.small }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button style="visibility: hidden;" class="add-item btn-flat topping-on-small" data-size="{{ item.small }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+                <td>{{ item.large }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button style="visibility: hidden;" class="add-item btn-flat topping-on-large" data-size="{{ item.large }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+            </tr>
+            {% endfor %}
+
+            <th id="{{ subs.first.type }}">{{ subs.first.type }}</th>
+            {% for item in subs %}
+            <tr>
+                {% if item.small == item.large %}
+                <td>{{ item.name }}</td>
+                <td></td>
+                <td>{{ item.large }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button class="add-item btn-flat" data-size="{{ item.large }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+                {% else %}
+                <td>{{ item.name }}</td>
+                <td>{{ item.small }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button class="add-item btn-flat" data-size="{{ item.small }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+                <td>{{ item.large }}</td>
+                {% if user.is_authenticated %}
+                <td><button class="add-item btn-flat" data-size="{{ item.large }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                            class="material-icons">add</i></button></td>
+                {% endif %}
+                {% endif %}
+            </tr>
+            {% if item.name == "Steak" %}
+            {% for item in subsadd %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td></td>
+                <td>+{{ item.large }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button class="add-item btn-flat" data-size="{{ item.large }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+            </tr>
+            {% endfor %}
+
+            {% endif %}
+            {% endfor %}
+
+            <th id="{{ pasta.first.type }}">{{ pasta.first.type }}</th>
+            {% for item in pasta %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td></td>
+                <td>{{ item.large }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button class="add-item btn-flat" data-size="{{ item.large }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+            </tr>
+            {% endfor %}
+
+            <th id="{{ salads.first.type }}">{{ salads.first.type }}</th>
+            {% for item in salads %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td></td>
+                <td>{{ item.large }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button class="add-item btn-flat" data-size="{{ item.large }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+            </tr>
+            {% endfor %}
+
+            <th id="{{ platters.first.type }}">{{ platters.first.type }}</th>
+            {% for item in platters %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.small }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button class="add-item btn-flat" data-size="{{ item.small }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+                <td>{{ item.large }}</td>
+                    {% if user.is_authenticated %}
+                    <td><button class="add-item btn-flat" data-size="{{ item.large }}" data-item="{{ item.id }}" href="" title="add item to shopping cart"><i
+                                class="material-icons">add</i></button></td>
+                    {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+#shopping-cart-icon, #arrow-icon {
+    position: fixed;
+    right: 5px;
+    bottom: 120px;
+}
+
+#arrow-icon {
+    bottom: 50px;
+}
+
+table th {
+    padding-top: 50px;
+}
+
+main {
+    min-height: 100vh;
+}
+
+.p1[data-count]:after{
+    position:absolute;
+    right:17%;
+    top:3%;
+    content: attr(data-count);
+    font-size:85%;
+    padding:.3em;
+    border-radius:40%;
+    line-height:1em;
+    color: white;
+    background: transparent;
+    text-align:center;
+    font-weight:bold;
+  }
+
+  .card .card-action input:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    font-size: large;
+    color: #ffab40;
+    transition: color .3s ease;
+    text-transform: uppercase;
+  }
+  
+  .card .card-action input:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+    color: #ffd8a6;
+  }
