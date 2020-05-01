@@ -189,7 +189,7 @@ def placeorder(request):
 
             send_mail(
                 'Your Pizza order is on it\'s way!',
-                message,
+                f'{message} \n\n Note: This is just for demonstration purposes, no real order is made',
                 'pizza.demo.website@gmail.com',
                 [user.email],
                 fail_silently=False,
