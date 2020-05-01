@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+
 
 # Create your models here.
 class Menu(models.Model):
@@ -18,7 +20,7 @@ class Cart(models.Model):
 
     small = "small"
     large = "large"
-    SIZE_CHOICE = [(small, "small"),(large, "large")]
+    SIZE_CHOICE = [(small, "small"), (large, "large")]
     size = models.CharField(max_length=5, choices=SIZE_CHOICE, default=small)
 
     def __str__(self):
@@ -38,7 +40,21 @@ class Order(models.Model):
     DELIVERED = "delivered"
     STATUS_CHOICES = [(PENDING, "pending"), (DELIVERED, "delivered")]
 
-    status = models.CharField(max_length=32, choices=STATUS_CHOICES, default=PENDING)
+    status = models.CharField(
+        max_length=32, choices=STATUS_CHOICES, default=PENDING)
 
     def __str__(self):
         return f"{self.user} __ {self.item.name} ({self.item.type}), price: $ {self.price}, ordered: {self.time} - status: {self.get_status_display()}"
+
+    def save(self):
+        if self.id:
+            old_staus = Order.objects.get(pk=self.id)
+            if old_staus.status == False and self.status == True:
+                send_mail(
+                    'Your Pizza order is delivered!',
+                    f"{self.user} __ {self.item.name} ({self.item.type}), price: $ {self.price}, ordered: {self.time} - status: {self.get_status_display()}",
+                    'pizza.demo.website@gmail.com',
+                    [self.user.email],
+                    fail_silently=False,
+                )
+        super(Order, self).save()
