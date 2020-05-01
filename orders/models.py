@@ -48,8 +48,8 @@ class Order(models.Model):
 
     def save(self):
         if self.id:
-            old_staus = Order.objects.get(pk=self.id)
-            if old_staus.status == PENDING and self.status == DELIVERED:
+            old_order = Order.objects.get(pk=self.id)
+            if old_order.status == "pending" and self.status == "delivered":
                 send_mail(
                     'Your Pizza order is delivered!',
                     f"{self.user} __ {self.item.name} ({self.item.type}), price: $ {self.price}, ordered: {self.time} - status: {self.get_status_display()}",
