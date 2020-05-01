@@ -52,7 +52,7 @@ class Order(models.Model):
             if old_order.status == "pending" and self.status == "delivered":
                 send_mail(
                     'Your Pizza order is delivered!',
-                    f"{self.user} __ {self.item.name} ({self.item.type}), price: $ {self.price}, ordered: {self.time} - status: {self.get_status_display()}",
+                    f"{self.user} __ {self.item.name} ({self.item.type}), price: $ {self.price}, \n status: {self.get_status_display()} at {self.time}",
                     'pizza.demo.website@gmail.com',
                     [self.user.email],
                     fail_silently=False,
