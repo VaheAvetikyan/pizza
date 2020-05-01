@@ -54,7 +54,7 @@ def register(request):
                 # Send an email
                 send_mail(
                     'Welcome to my Pizza store demo website',
-                    f'Hi {user.username}! Your account is created successfully',
+                    f'Hi {user.username}! Your account is created successfully․ \n\n Note: This website is for demonstration purposes only.',
                     'pizza.demo.website@gmail.com',
                     [user.email],
                     fail_silently=False,
