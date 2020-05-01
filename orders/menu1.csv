@@ -1,0 +1,56 @@
+type,name,small,large
+Pizza,Regular,12.7,17.95
+Pizza,Regular Special,17.75,25.95
+Pizza,Sicilian,24.45,38.7
+Pizza,Sicilian Special,30.45,45.7
+Toppings,Pepperoni,1,2
+Toppings,Sausage,1,2
+Toppings,Mushrooms,1,2
+Toppings,Onions,1,2
+Toppings,Ham,1,2
+Toppings,Canadian Bacon,1,2
+Toppings,Pineapple,1,2
+Toppings,Eggplant,1,2
+Toppings,Tomato & Basil,1,2
+Toppings,Green Peppers,1,2
+Toppings,Hamburger,1,2
+Toppings,Spinach,1,2
+Toppings,Artichoke,1,2
+Toppings,Buffalo Chicken,1,2
+Toppings,Barbecue Chicken,1,2
+Toppings,Anchovies,1,2
+Toppings,Black Olives,1,2
+Toppings,Fresh Garlic,1,2
+Toppings,Zucchini,1,2
+Subs,Cheese,6.5,7.95
+Subs,Italian,6.5,7.95
+Subs,Ham + Cheese,6.5,7.95
+Subs,Meatball,6.5,7.95
+Subs,Tuna,6.5,7.95
+Subs,Turkey,7.5,8.5
+Subs,Chicken Parmigiana,7.5,8.5
+Subs,Eggplant Parmigiana,6.5,7.95
+Subs,Steak,6.5,7.95
+Subs addons,Steak + Cheese,0.5,0.5
+Subs addons,Steak + Mushrooms,0.5,0.5
+Subs addons,Steak + Green Peppers,0.5,0.5
+Subs addons,Steak + Onions,0.5,0.5
+Subs,Sausage Peppers & Onions,8.5,8.5
+Subs,Hamburger,4.6,6.95
+Subs,Cheeseburger,5.1,7.45
+Subs,Fried Chicken,6.95,8.5
+Subs,Veggie,6.95,8.5
+Subs,Extra Cheese on any sub,0.5,0.5
+Pasta,Baked Ziti w/Mozzarella,6.5,6.5
+Pasta,Baked Ziti w/Meatballs,8.75,8.75
+Pasta,Baked Ziti w/Chicken,9.75,9.75
+Salads,Garden Salad,6.25,6.25
+Salads,Greek Salad,8.25,8.25
+Salads,Antipasto,8.25,8.25
+Salads,Salad w/Tuna,8.25,8.25
+Dinner Platters,Garden Salad,40,65
+Dinner Platters,Greek Salad,50,75
+Dinner Platters,Antipasto,50,75
+Dinner Platters,Baked Ziti,40,65
+Dinner Platters,Meatball Parm,50,75
+Dinner Platters,Chicken Parm,55,85
