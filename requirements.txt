@@ -1,4 +1,4 @@
-Django==3.1.13
+Django==3.2.24
 pytz==2020.1
 django-heroku
 gunicorn
